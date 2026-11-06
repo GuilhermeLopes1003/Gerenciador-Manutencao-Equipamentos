@@ -89,4 +89,40 @@ typedef struct {
 | `consultar` | Busca um nó pelo código e exibe os dados |
 | `alterar` | Altera prioridade e período com validação |
 | `ImprimeLista` | Exibe todos os nós de uma lista |
-|
+| `LiberaLista` | Libera todos os nós e o descritor |
+| `inserirOrdemUrgencia` | Auxiliar da opção 5: insere na lista de urgência pelos 3 critérios |
+| `exibirOrdemManutencao` | Cria a lista de urgência, exibe e libera |
+
+## Como compilar e executar
+
+### Code::Blocks
+
+1. Coloque `main.c` e `Biblioteca_Projeto1.h` na mesma pasta.
+2. Abra o `main.c` no Code::Blocks.
+3. Clique em **Build and run** (F9).
+
+### Terminal (GCC)
+
+```bash
+gcc main.c -o gerenciador
+./gerenciador          # Linux/macOS
+gerenciador.exe        # Windows
+```
+
+> O programa usa `system("cls")` e `system("pause")`, comandos do Windows. Em Linux/macOS ele funciona, mas a tela não é limpa entre as operações.
+
+## Exemplo de uso
+
+Com estas solicitações cadastradas:
+
+| Código | Equipamento | Prioridade | Período |
+| --- | --- | --- | --- |
+| 1100 | Fonte | 1 | 7 |
+| 1200 | Multímetro | 3 | 5 |
+| 1300 | Gerador | 2 | 10 |
+| 1407 | Osciloscópio | 2 | 10 |
+
+A **opção 6** mostra a lista por código: `1100 → 1200 → 1300 → 1407`
+
+A **opção 5** mostra a ordem de manutenção: `1100 → 1300 → 1407 → 1200`
+(1300 e 1407 empatam em prioridade e período e são desempatados pelo código.)
